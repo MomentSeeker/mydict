@@ -1,0 +1,505 @@
+Sources/MyDictApp/AppModel.swift
+  s_6f6cadeb6e6e83::t_3ef8cd94063fe4 41,48,51-52,224-232,236,238,260-261 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a41361fd1cc8176ffce1824","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Single":41},{"Single":48},{"Range":[51,52]},{"Range":[224,232]},{"Single":236},{"Single":238},{"Range":[260,261]}]}]}
+  s_c5bc5251d4bd67::t_5369dabc13b8b7 167-173 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a413d2bd1cc8176ffce18c1","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Range":[167,173]}]}]}
+Tests/MyDictAppTests/SearchServiceTests.swift
+  s_6f6cadeb6e6e83::t_2bc0dd7f66c3d2 53-101 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a4135f9d1cc8176ffce17eb","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Range":[53,101]}]}]}
+  s_c5bc5251d4bd67::t_255c06b2b824c8 135-150 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a413d17d1cc8176ffce18a5","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Range":[135,150]}]}]}
+README.md
+  s_c5bc5251d4bd67::t_a5a2d14863c34f 20 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a4143cad1cc8176ffce196c","tool_type":"agent","tool_id":"RunCommand","line_ranges":[{"Single":20}]}]}
+Sources/MyDictCore/Services/HistoryStore.swift
+  s_6f6cadeb6e6e83::t_813fe75d186057 50-60,68-74 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a413619d1cc8176ffce180a","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Range":[50,60]},{"Range":[68,74]}]}]}
+Sources/MyDictApp/ContentView.swift
+  s_c5bc5251d4bd67::t_24c80120190e43 6,35-39,41-44 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a413d35d1cc8176ffce18f0","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Single":6},{"Range":[35,39]},{"Range":[41,44]}]}]}
+  s_c5bc5251d4bd67::t_82f758b9e6251f 57,115-116 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a413d4ad1cc8176ffce190b","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Single":57},{"Range":[115,116]}]}]}
+Sources/MyDictApp/Views/HistoryView.swift
+  s_6f6cadeb6e6e83::t_bfb40eb78f5fd4 9,13-40,44-50 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a413625d1cc8176ffce183b","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Single":9},{"Range":[13,40]},{"Range":[44,50]}]}]}
+Sources/MyDictApp/MyDictApp.swift
+  s_c5bc5251d4bd67::t_9dbdd3ef4a346a 18 gitai:{"mixed_line_ranges":[],"operations":[{"operation_id":"6a413d31d1cc8176ffce18d8","tool_type":"agent","tool_id":"apply_patch","line_ranges":[{"Single":18}]}]}
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "dad099895a82f8e27528e32fcfe38db0d2b0dbea",
+  "prompts": {},
+  "sessions": {
+    "s_6f6cadeb6e6e83": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a4135add1cc8176ffce17bd",
+        "model": "gpt-5.5__dev"
+      },
+      "human_author": "lichaochen <lichaochen@bytedance.com>"
+    },
+    "s_c5bc5251d4bd67": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a413c61d1cc8176ffce186b",
+        "model": "gpt-5.5__dev",
+        "display_model_name": "GPT-5.5"
+      },
+      "human_author": "lichaochen <lichaochen@bytedance.com>"
+    }
+  },
+  "attestation_metadata": {
+    "README.md": [
+      {
+        "hash": "s_c5bc5251d4bd67::t_a5a2d14863c34f",
+        "line_ranges": [
+          {
+            "Single": 20
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a4143cad1cc8176ffce196c",
+            "tool_type": "agent",
+            "tool_id": "RunCommand",
+            "line_ranges": [
+              {
+                "Single": 20
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Sources/MyDictApp/AppModel.swift": [
+      {
+        "hash": "s_6f6cadeb6e6e83::t_3ef8cd94063fe4",
+        "line_ranges": [
+          {
+            "Single": 41
+          },
+          {
+            "Single": 48
+          },
+          {
+            "Range": [
+              51,
+              52
+            ]
+          },
+          {
+            "Range": [
+              224,
+              232
+            ]
+          },
+          {
+            "Single": 236
+          },
+          {
+            "Single": 238
+          },
+          {
+            "Range": [
+              260,
+              261
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a41361fd1cc8176ffce1824",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Single": 41
+              },
+              {
+                "Single": 48
+              },
+              {
+                "Range": [
+                  51,
+                  52
+                ]
+              },
+              {
+                "Range": [
+                  224,
+                  232
+                ]
+              },
+              {
+                "Single": 236
+              },
+              {
+                "Single": 238
+              },
+              {
+                "Range": [
+                  260,
+                  261
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_c5bc5251d4bd67::t_5369dabc13b8b7",
+        "line_ranges": [
+          {
+            "Range": [
+              167,
+              173
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a413d2bd1cc8176ffce18c1",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Range": [
+                  167,
+                  173
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Sources/MyDictApp/ContentView.swift": [
+      {
+        "hash": "s_c5bc5251d4bd67::t_24c80120190e43",
+        "line_ranges": [
+          {
+            "Single": 6
+          },
+          {
+            "Range": [
+              35,
+              39
+            ]
+          },
+          {
+            "Range": [
+              41,
+              44
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a413d35d1cc8176ffce18f0",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Single": 6
+              },
+              {
+                "Range": [
+                  35,
+                  39
+                ]
+              },
+              {
+                "Range": [
+                  41,
+                  44
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_c5bc5251d4bd67::t_82f758b9e6251f",
+        "line_ranges": [
+          {
+            "Single": 57
+          },
+          {
+            "Range": [
+              115,
+              116
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a413d4ad1cc8176ffce190b",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Single": 57
+              },
+              {
+                "Range": [
+                  115,
+                  116
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Sources/MyDictApp/MyDictApp.swift": [
+      {
+        "hash": "s_c5bc5251d4bd67::t_9dbdd3ef4a346a",
+        "line_ranges": [
+          {
+            "Single": 18
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a413d31d1cc8176ffce18d8",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Single": 18
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Sources/MyDictApp/Views/HistoryView.swift": [
+      {
+        "hash": "s_6f6cadeb6e6e83::t_bfb40eb78f5fd4",
+        "line_ranges": [
+          {
+            "Single": 9
+          },
+          {
+            "Range": [
+              13,
+              40
+            ]
+          },
+          {
+            "Range": [
+              44,
+              50
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a413625d1cc8176ffce183b",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Single": 9
+              },
+              {
+                "Range": [
+                  13,
+                  40
+                ]
+              },
+              {
+                "Range": [
+                  44,
+                  50
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Sources/MyDictCore/Services/HistoryStore.swift": [
+      {
+        "hash": "s_6f6cadeb6e6e83::t_813fe75d186057",
+        "line_ranges": [
+          {
+            "Range": [
+              50,
+              60
+            ]
+          },
+          {
+            "Range": [
+              68,
+              74
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a413619d1cc8176ffce180a",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Range": [
+                  50,
+                  60
+                ]
+              },
+              {
+                "Range": [
+                  68,
+                  74
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "Tests/MyDictAppTests/SearchServiceTests.swift": [
+      {
+        "hash": "s_6f6cadeb6e6e83::t_2bc0dd7f66c3d2",
+        "line_ranges": [
+          {
+            "Range": [
+              53,
+              101
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a4135f9d1cc8176ffce17eb",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Range": [
+                  53,
+                  101
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hash": "s_c5bc5251d4bd67::t_255c06b2b824c8",
+        "line_ranges": [
+          {
+            "Range": [
+              135,
+              150
+            ]
+          }
+        ],
+        "mixed_line_ranges": [],
+        "operations": [
+          {
+            "operation_id": "6a413d17d1cc8176ffce18a5",
+            "tool_type": "agent",
+            "tool_id": "apply_patch",
+            "line_ranges": [
+              {
+                "Range": [
+                  135,
+                  150
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "remote_transcripts": {
+    "s_6f6cadeb6e6e83": {
+      "tool": "trae",
+      "conversation_id": "6a4135add1cc8176ffce17bd",
+      "session_id": "6a4135add1cc8176ffce17bd",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_6f6cadeb6e6e83::t_2bc0dd7f66c3d2": {
+      "tool": "trae",
+      "conversation_id": "6a4135add1cc8176ffce17bd",
+      "session_id": "6a4135add1cc8176ffce17bd",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_6f6cadeb6e6e83::t_3ef8cd94063fe4": {
+      "tool": "trae",
+      "conversation_id": "6a4135add1cc8176ffce17bd",
+      "session_id": "6a4135add1cc8176ffce17bd",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_6f6cadeb6e6e83::t_813fe75d186057": {
+      "tool": "trae",
+      "conversation_id": "6a4135add1cc8176ffce17bd",
+      "session_id": "6a4135add1cc8176ffce17bd",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_6f6cadeb6e6e83::t_bfb40eb78f5fd4": {
+      "tool": "trae",
+      "conversation_id": "6a4135add1cc8176ffce17bd",
+      "session_id": "6a4135add1cc8176ffce17bd",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_c5bc5251d4bd67": {
+      "tool": "trae",
+      "conversation_id": "6a413c61d1cc8176ffce186b",
+      "session_id": "6a413c61d1cc8176ffce186b",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_c5bc5251d4bd67::t_24c80120190e43": {
+      "tool": "trae",
+      "conversation_id": "6a413c61d1cc8176ffce186b",
+      "session_id": "6a413c61d1cc8176ffce186b",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_c5bc5251d4bd67::t_255c06b2b824c8": {
+      "tool": "trae",
+      "conversation_id": "6a413c61d1cc8176ffce186b",
+      "session_id": "6a413c61d1cc8176ffce186b",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_c5bc5251d4bd67::t_5369dabc13b8b7": {
+      "tool": "trae",
+      "conversation_id": "6a413c61d1cc8176ffce186b",
+      "session_id": "6a413c61d1cc8176ffce186b",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_c5bc5251d4bd67::t_82f758b9e6251f": {
+      "tool": "trae",
+      "conversation_id": "6a413c61d1cc8176ffce186b",
+      "session_id": "6a413c61d1cc8176ffce186b",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_c5bc5251d4bd67::t_9dbdd3ef4a346a": {
+      "tool": "trae",
+      "conversation_id": "6a413c61d1cc8176ffce186b",
+      "session_id": "6a413c61d1cc8176ffce186b",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    },
+    "s_c5bc5251d4bd67::t_a5a2d14863c34f": {
+      "tool": "trae",
+      "conversation_id": "6a413c61d1cc8176ffce186b",
+      "session_id": "6a413c61d1cc8176ffce186b",
+      "status": "remote_only",
+      "message": "Remote transcript resolution is not implemented yet for TRAE prompts."
+    }
+  }
+}
