@@ -1,7 +1,6 @@
 .build/
 build/
 dist/
-backups/
 .swiftpm/
 DerivedData/
 *.xcuserdata/
