@@ -47,11 +47,30 @@ public final class HistoryStore: @unchecked Sendable {
         return Array(next.prefix(500))
     }
 
+    public func search(_ items: [LookupHistoryItem], matching query: String) -> [LookupHistoryItem] {
+        let needle = Self.historySearchKey(query)
+        guard !needle.isEmpty else { return items }
+
+        return items.filter { item in
+            Self.historySearchKey(item.queryText).contains(needle)
+                || Self.historySearchKey(item.selectedHeadword).contains(needle)
+                || Self.historySearchKey(item.wordID).contains(needle)
+        }
+    }
+
     public func boosts(from items: [LookupHistoryItem]) -> [String: Double] {
         var counts: [String: Double] = [:]
         for item in items.prefix(100) {
             counts[item.wordID, default: 0] += 1
         }
         return counts.mapValues { min(1, log($0 + 1) / log(6)) }
+    }
+
+    private static func historySearchKey(_ text: String) -> String {
+        text
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+            .folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+            .lowercased()
+            .filter { $0.isLetter || $0.isNumber }
     }
 }

@@ -6,20 +6,48 @@ struct HistoryView: View {
 
     var body: some View {
         let days = model.historyByDay()
+        let visibleLookupCount = model.historyLookupCount()
 
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                HStack {
-                    SectionHeader("History", icon: "clock.arrow.circlepath")
-                    Spacer()
-                    Text("\(model.history.count) lookups")
-                        .font(.system(size: 11, weight: .medium))
-                        .foregroundStyle(.tertiary)
+                VStack(alignment: .leading, spacing: 14) {
+                    HStack {
+                        SectionHeader("History", icon: "clock.arrow.circlepath")
+                        Spacer()
+                        Text(model.isFilteringHistory ? "\(visibleLookupCount) matching lookups" : "\(model.history.count) lookups")
+                            .font(.system(size: 11, weight: .medium))
+                            .foregroundStyle(.tertiary)
+                    }
+
+                    HStack(spacing: 8) {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(.secondary)
+                        TextField("Search history by word or past query", text: $model.historySearchText)
+                            .textFieldStyle(.plain)
+                        if model.isFilteringHistory {
+                            Button {
+                                model.historySearchText = ""
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(.tertiary)
+                            }
+                            .buttonStyle(.plain)
+                            .help("Clear history search")
+                        }
+                    }
+                    .padding(.horizontal, 12)
+                    .frame(height: 36)
+                    .background(Color.secondary.opacity(0.06), in: RoundedRectangle(cornerRadius: 8))
                 }
 
                 if days.isEmpty {
-                    ContentUnavailableView("No lookups yet", systemImage: "clock", description: Text("Words you search will show up here, grouped by day."))
-                        .padding(.top, 40)
+                    if model.isFilteringHistory {
+                        ContentUnavailableView("No matching lookups", systemImage: "magnifyingglass", description: Text("Try another word or clear the history search."))
+                            .padding(.top, 40)
+                    } else {
+                        ContentUnavailableView("No lookups yet", systemImage: "clock", description: Text("Words you search will show up here, grouped by day."))
+                            .padding(.top, 40)
+                    }
                 } else {
                     ForEach(days) { day in
                         DaySection(day: day)

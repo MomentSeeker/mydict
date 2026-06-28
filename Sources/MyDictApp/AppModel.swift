@@ -38,16 +38,18 @@ final class AppModel: ObservableObject {
     @Published private(set) var entryCount = SeedDictionary.entries.count
     @Published var section: Section = .lookup
     @Published var focusSearchToken = 0
+    @Published var historySearchText = ""
 
     private var entries = SeedDictionary.entries
     private var searchService: SearchService
     private var detailLoadTask: Task<Void, Never>?
     private var searchTask: Task<Void, Never>?
     private var usesSQLiteSearch = false
-    private let historyStore = HistoryStore()
+    private let historyStore: HistoryStore
     private let speechService = SpeechService()
 
-    init() {
+    init(historyStore: HistoryStore = HistoryStore()) {
+        self.historyStore = historyStore
         searchService = SearchService(entries: entries)
         history = historyStore.load()
         loadFullDictionary()
@@ -162,6 +164,13 @@ final class AppModel: ObservableObject {
         preview(candidates[nextIndex])
     }
 
+    func requestSearchFocus(revealLookup: Bool = false) {
+        if revealLookup {
+            section = .lookup
+        }
+        focusSearchToken += 1
+    }
+
     private func highlightedCandidate() -> SearchCandidate? {
         guard let highlightedCandidateID else { return nil }
         return candidates.first { $0.id == highlightedCandidateID }
@@ -212,12 +221,21 @@ final class AppModel: ObservableObject {
         history.reduce(0) { $0 + ($1.wordID == wordID ? 1 : 0) }
     }
 
-    func historyByDay() -> [HistoryDaySummary] {
+    var isFilteringHistory: Bool {
+        !historySearchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    func historyLookupCount(matching searchText: String? = nil) -> Int {
+        historyItems(matching: searchText).count
+    }
+
+    func historyByDay(matching searchText: String? = nil) -> [HistoryDaySummary] {
         let calendar = Calendar.current
         let totals = history.reduce(into: [String: Int]()) { $0[$1.wordID, default: 0] += 1 }
         let favorites = Set(history.filter(\.isFavorite).map(\.wordID))
+        let visibleItems = historyItems(matching: searchText)
 
-        let grouped = Dictionary(grouping: history) { calendar.startOfDay(for: $0.lookedUpAt) }
+        let grouped = Dictionary(grouping: visibleItems) { calendar.startOfDay(for: $0.lookedUpAt) }
 
         return grouped.map { day, items in
             var seen = Set<String>()
@@ -237,6 +255,10 @@ final class AppModel: ObservableObject {
             return HistoryDaySummary(date: day, title: Self.dayTitle(for: day, calendar: calendar), words: words)
         }
         .sorted { $0.date > $1.date }
+    }
+
+    private func historyItems(matching searchText: String? = nil) -> [LookupHistoryItem] {
+        historyStore.search(history, matching: searchText ?? historySearchText)
     }
 
     func openWord(wordID: String, query: String) {

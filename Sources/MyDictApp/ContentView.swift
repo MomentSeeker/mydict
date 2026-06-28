@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var model: AppModel
+    @Environment(\.scenePhase) private var scenePhase
     @FocusState private var isSearchFocused: Bool
 
     var body: some View {
@@ -31,9 +32,16 @@ struct ContentView: View {
                 isSearchFocused = true
             }
         }
+        .onChange(of: scenePhase) {
+            if scenePhase == .active {
+                model.requestSearchFocus()
+            }
+        }
         .onChange(of: model.focusSearchToken) {
-            model.section = .lookup
-            isSearchFocused = true
+            isSearchFocused = false
+            DispatchQueue.main.async {
+                isSearchFocused = true
+            }
         }
     }
 }
@@ -46,7 +54,7 @@ private struct SidebarView: View {
         VStack(spacing: 12) {
             VStack(spacing: 10) {
                 sectionPicker
-                offlineBadge
+                dictionaryCountLabel
             }
 
             HStack(spacing: 8) {
@@ -104,20 +112,13 @@ private struct SidebarView: View {
         .padding(.horizontal, 14)
     }
 
-    private var offlineBadge: some View {
-        HStack(spacing: 8) {
-            HStack(spacing: 6) {
-                Image(systemName: "wifi.slash")
-                    .font(.system(size: 11, weight: .semibold))
-                Text("Offline · No token")
-                    .font(.system(size: 11, weight: .semibold))
-            }
+    private var dictionaryCountLabel: some View {
+        HStack {
             Text("\(model.entryCount.formatted()) words")
                 .font(.system(size: 11, weight: .medium))
                 .foregroundStyle(.tertiary)
             Spacer()
         }
-        .foregroundStyle(.secondary)
         .padding(.horizontal, 14)
         .help(model.dictionaryStatus)
     }

@@ -15,7 +15,7 @@ struct MyDictApp: App {
         .commands {
             CommandMenu("Lookup") {
                 Button("Focus Search") {
-                    model.focusSearchToken += 1
+                    model.requestSearchFocus(revealLookup: true)
                 }
                 .keyboardShortcut("l", modifiers: [.command])
             }

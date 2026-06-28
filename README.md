@@ -17,6 +17,7 @@ swift test
 ## Current MVP
 
 - Native SwiftUI macOS app
+- Blue dictionary app icon assets under `Assets/AppIcon`
 - Bundled offline SQLite dictionary built from WordNet 3.0 and ECDICT
 - 447k+ offline word entries, 612k+ senses, and 79k+ example sentences
 - English-to-Chinese definitions from ECDICT

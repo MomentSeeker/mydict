@@ -50,6 +50,55 @@ import Testing
     try? FileManager.default.removeItem(at: fileURL)
 }
 
+@Test func historySearchMatchesOriginalQueryAndSelectedHeadword() {
+    let store = HistoryStore()
+    let items = [
+        LookupHistoryItem(
+            wordID: "phone-in",
+            queryText: "phone in",
+            selectedHeadword: "phone-in"
+        ),
+        LookupHistoryItem(
+            wordID: "receive",
+            queryText: "recieve",
+            selectedHeadword: "receive"
+        )
+    ]
+
+    #expect(store.search(items, matching: "phone in").map(\.wordID) == ["phone-in"])
+    #expect(store.search(items, matching: "receive").map(\.wordID) == ["receive"])
+    #expect(store.search(items, matching: "RECIEVE").map(\.wordID) == ["receive"])
+}
+
+@MainActor
+@Test func historyByDayCanFilterPastLookups() throws {
+    let fileURL = FileManager.default.temporaryDirectory
+        .appendingPathComponent(UUID().uuidString)
+        .appendingPathExtension("json")
+    let store = HistoryStore(fileURL: fileURL)
+    try store.save([
+        LookupHistoryItem(
+            wordID: "phone-in",
+            queryText: "phone in",
+            selectedHeadword: "phone-in",
+            lookedUpAt: Date(timeIntervalSince1970: 1_800)
+        ),
+        LookupHistoryItem(
+            wordID: "receive",
+            queryText: "recieve",
+            selectedHeadword: "receive",
+            lookedUpAt: Date(timeIntervalSince1970: 900)
+        )
+    ])
+    let model = AppModel(historyStore: store)
+
+    let days = model.historyByDay(matching: "phone")
+
+    #expect(days.flatMap(\.words).map(\.wordID) == ["phone-in"])
+
+    try? FileManager.default.removeItem(at: fileURL)
+}
+
 @MainActor
 @Test func selectingCandidateKeepsOriginalQueryText() {
     let model = AppModel()
@@ -81,6 +130,22 @@ import Testing
     #expect(model.query == "phone in")
     #expect(model.selectedEntry?.headword == "phone-in")
     #expect(model.history.first?.queryText == "phone in")
+}
+
+@MainActor
+@Test func requestingSearchFocusCanPreserveOrRevealLookupSection() {
+    let model = AppModel()
+    model.section = .history
+
+    model.requestSearchFocus()
+
+    #expect(model.focusSearchToken == 1)
+    #expect(model.section == .history)
+
+    model.requestSearchFocus(revealLookup: true)
+
+    #expect(model.focusSearchToken == 2)
+    #expect(model.section == .lookup)
 }
 
 @Test func bundledSQLiteDictionaryLoadsEntries() throws {
