@@ -22,11 +22,18 @@ BIN_DIR="$(swift build -c release --show-bin-path)"
 
 echo "==> Generating app icon"
 ICONSET="$BUILD_TMP/AppIcon.iconset"
-rm -rf "$ICONSET"
-mkdir -p "$ICONSET"
-swift "scripts/make_appicon.swift" "$ICONSET"
 mkdir -p "$BUILD_TMP"
-iconutil -c icns "$ICONSET" -o "$BUILD_TMP/AppIcon.icns"
+if [[ -f "Assets/AppIcon/AppIcon.icns" ]]; then
+    cp "Assets/AppIcon/AppIcon.icns" "$BUILD_TMP/AppIcon.icns"
+elif [[ -d "Assets/AppIcon/AppIcon.iconset" ]]; then
+    rm -f "$BUILD_TMP/AppIcon.icns"
+    iconutil -c icns "Assets/AppIcon/AppIcon.iconset" -o "$BUILD_TMP/AppIcon.icns"
+else
+    rm -rf "$ICONSET"
+    mkdir -p "$ICONSET"
+    swift "scripts/make_appicon.swift" "$ICONSET"
+    iconutil -c icns "$ICONSET" -o "$BUILD_TMP/AppIcon.icns"
+fi
 
 echo "==> Assembling bundle at $APP"
 rm -rf "$APP"
